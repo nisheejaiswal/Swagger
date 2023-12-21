@@ -1,0 +1,445 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "Siemens Building X",
+        "description": "The Building X datasets serve as the foundation for the design of the Energy and Building Performance Dashboard within Power BI, leveraging the capabilities of both Power BI and the Building X platform.",
+        "contact": {
+            "name": "",
+            "url": "",
+            "email": "support@contoso.com"
+        }
+    },
+    "host": "api.bpcloud.siemens.com",
+    "basePath": "/",
+    "schemes": [
+        "https"
+    ],
+    "consumes": [],
+    "produces": [],
+    "paths": {
+        "/structure/partitions/{partition}/equipment": {
+            "get": {
+                "tags": [
+                    "Equipments"
+                ],
+                "summary": "List Equipments",
+                "operationId": "listEquipment",
+                "description": "List Equipments",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/components/schemas/EquipmentListResponse"
+                        }
+                    }
+                    },
+                    "default": "#/components/schemas/Error"
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "application/vnd.api+json"
+                            ],
+                            "required": true
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/pageLimitParam"
+                    },
+                    {
+                        "$ref": "#/components/parameters/pageCursorParam"
+                    }
+                ]
+            }
+        },
+        "/structure/partitions/{partition}/equipment/{equipmentId}": {
+            "get": {
+                "tags": [
+                    "Equipments"
+                ],
+                "summary": "Get Equipment",
+                "operationId": "getEquipmentById",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EquipmentGetResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "application/vnd.api+json"
+                            ],
+                            "required": true
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/EquipmentIdParam"
+                    }
+                ]
+            }
+        },
+        "/structure/partitions/{partition}/locations": {
+            "get": {
+                "tags": [
+                    "Locations"
+                ],
+                "summary": "List Locations",
+                "operationId": "listLocation",
+                "description": "List Locations",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LocationListResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "application/vnd.api+json"
+                            ],
+                            "required": true
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/pageLimitParam"
+                    },
+                    {
+                        "$ref": "#/components/parameters/pageNumberParam"
+                    }
+                ]
+            }
+        },
+        "/structure/partitions/{partition}/locations/{locationId}/relationships/is-part-of": {
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/LocationIdParam"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "Locations"
+                ],
+                "summary": "List/Get isPartOf relationships for the Location",
+                "operationId": "locationGetIsPartOf",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LocationRelationshipIsPartOfResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "application/vnd.api+json"
+                            ],
+                            "required": true
+                        }
+                    }
+                ]
+            }
+        },
+        "/structure/partitions/{partition}/point-groups": {
+            "get": {
+                "tags": [
+                    "PointGroups"
+                ],
+                "summary": "List PointGroups",
+                "operationId": "listPointGroup",
+                "description": "List PointGroups",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PointGroupListResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "application/vnd.api+json"
+                            ],
+                            "required": true
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/pageLimitParam"
+                    },
+                    {
+                        "$ref": "#/components/parameters/pageCursorParam"
+                    },
+                    {
+                        "in": "query",
+                        "required": false,
+                        "description": "Filter by 'id'",
+                        "name": "filter[entity.id]",
+                        "example": "",
+                        "schema": {}
+                    }
+                ]
+            }
+        },
+        "/structure/partitions/{partition}/point-groups/{point-groupId}": {
+            "get": {
+                "tags": [
+                    "PointGroups"
+                ],
+                "summary": "Get PointGroup",
+                "operationId": "getPointGroupById",
+                "description": "",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PointGroupGetResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "application/vnd.api+json"
+                            ],
+                            "required": true
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/PointGroupIdParam"
+                    }
+                ]
+            }
+        },
+        "/structure/partitions/{partition}/point-groups/{point-groupId}/points": {
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/PointGroupIdParam"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "PointGroups"
+                ],
+                "summary": "List Points",
+                "operationId": "listPoint",
+                "description": "List Points",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PointListResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "application/vnd.api+json"
+                            ],
+                            "required": true
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/pageLimitParam"
+                    },
+                    {
+                        "$ref": "#/components/parameters/pageCursorParam"
+                    }
+                ]
+            }
+        },
+        "/structure/partitions/{partition}/point-groups/{point-groupId}/values": {
+            "parameters": [
+                {
+                    "$ref": "#/components/parameters/PointGroupIdParam"
+                }
+            ],
+            "get": {
+                "tags": [
+                    "PointGroups"
+                ],
+                "summary": "List PointValues",
+                "operationId": "listPointValue",
+                "description": "List PointValues",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValueListResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Error",
+                        "content": {
+                            "application/vnd.api+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Accept",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "application/vnd.api+json"
+                            ],
+                            "required": true
+                        }
+                    },
+                    {
+                        "$ref": "#/components/parameters/pageLimitParam"
+                    },
+                    {
+                        "$ref": "#/components/parameters/pageCursorParam"
+                    }
+                ]
+            }
+        }
+    },
+    "securityDefinitions": {
+        "oauth2-auth": {
+            "type": "oauth2",
+            "flow": "accessCode",
+            "authorizationUrl": "",
+            "tokenUrl": "https://login.windows.net/common/oauth2/authorize",
+            "scopes": {}
+        }
+    },
+    "security": [
+        {
+            "oauth2-auth": []
+        }
+    ],
+    "tags": []
+  }
+  
